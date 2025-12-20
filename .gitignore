@@ -209,3 +209,12 @@ __marimo__/
 # Hackathon data
 data/
 *.csv
+
+# Dossiers de modèles AutoGluon
+autogluon_*/
+
+# Logs SLURM et exécutions
+logs/
+
+# Fichiers de soumission
+submissions/
