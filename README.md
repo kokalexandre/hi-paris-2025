@@ -33,6 +33,7 @@ In practice, this approach was **not conclusive**: training the regressor only o
 
 ## Repository structure
 
+```text
 hi-paris-2025/
 ├── .gitignore                          # Excludes data, CSVs, AutoGluon artifacts, logs, etc.
 ├── LICENSE                             
