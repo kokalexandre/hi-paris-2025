@@ -57,6 +57,7 @@ hi-paris-2025/
         ├── mathscore_regressor_inference.py # Infer continuous MathScore on X_test_clean (ID, MathScore)
         ├── merge_mathscore_predictions.py   predictions
         └── eval_r2.py                  # Compute R2 on y_test vs final predictions
+```
 
 ## Environment setup
 
