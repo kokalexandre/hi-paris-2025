@@ -33,15 +33,29 @@ In practice, this approach was **not conclusive**: training the regressor only o
 
 ## Repository structure
 
-- `src/models/`
-  - `zero_classifier.py`: trains an AutoGluon binary classifier (`MathScore_is_non_zero`) with `eval_metric=f1`
-  - `zero_classifier_inference.py`: runs inference with the trained classifier
-  - `mathscore_regressor.py`: trains an AutoGluon regressor with `eval_metric=r2`
-  - `mathscore_regressor_inference.py`: runs inference with the trained regressor
-  - `merge_mathscore_predictions.py`: combines regressor + classifier outputs into final predictions
-  - `eval_r2.py`: computes R2 on a labeled test set
-- `scripts/`: SLURM job scripts (sbatch) to train and run inference on a cluster
-- `notebooks/`: exploration and preprocessing notebooks
+hi-paris-2025/
+├── .gitignore                          # Excludes data, CSVs, AutoGluon artifacts, logs, etc.
+├── LICENSE                             
+├── README.md                           
+│
+├── notebooks/                          # Exploration and preprocessing notebooks (no dataset in repo)
+│   ├── exploration.ipynb             
+│   └── preprocessing.ipynb             # Preprocessing and leakage-related feature analysis
+│
+├── scripts/                            # SLURM job scripts (sbatch) for cluster execution
+│   ├── train_zero_classifier.sh        # Train the zero vs non-zero classifier
+│   ├── train_regressor.sh              # Train the MathScore regressor
+│   ├── run_zero_inference.sh           # Run zero-classifier inference on X_test_clean
+│   └── run_regressor_inference.sh      # Run regressor inference on X_test_clean
+│
+└── src/
+    └── models/                         
+        ├── zero_classifier.py          # Train binary model: MathScore_is_non_zero (metric: F1)
+        ├── zero_classifier_inference.py# Infer 0/1 on X_test_clean
+        ├── mathscore_regressor.py      # Train regression model for MathScore (metric: R2)
+        ├── mathscore_regressor_inference.py # Infer continuous MathScore on X_test_clean (ID, MathScore)
+        ├── merge_mathscore_predictions.py   predictions
+        └── eval_r2.py                  # Compute R2 on y_test vs final predictions
 
 ## Environment setup
 
